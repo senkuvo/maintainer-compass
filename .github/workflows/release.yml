@@ -1,0 +1,22 @@
+name: Release checklist
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Run tests before release
+        run: python -m unittest
+      - name: Generate maintainer report
+        run: maintainer-compass scan . --format markdown --output release-maintainer-report.md

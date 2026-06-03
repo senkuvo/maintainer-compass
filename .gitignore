@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.coverage
+build/
+dist/
+.mypy_cache/
+.pytest_cache/
+tmp*/
+.tmp*/
+maintainer-report.md
