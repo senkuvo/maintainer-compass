@@ -14,7 +14,7 @@ For local development from this repository:
 
 ```bash
 python -m pip install -e .
-python -m unittest
+python -m unittest discover -s tests
 ```
 
 ## Use
