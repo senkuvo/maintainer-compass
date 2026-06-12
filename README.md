@@ -4,6 +4,12 @@ Maintainer Compass is a dependency-free CLI that audits an open-source repositor
 
 The goal is not to shame projects with a score. The goal is to give maintainers a fast, local report they can use before a release, before onboarding new contributors, or before applying for ecosystem support programs.
 
+## Project Status
+
+Maintainer Compass is an early-stage project focused on practical repository health signals that maintainers can verify locally. The first release is intentionally dependency-free: it can run in CI, in a release checklist, or during contributor onboarding without sending repository contents to a service.
+
+Future optional integrations may use AI assistance for issue triage, release-risk summaries, and suggested maintainer checklists, while keeping the core scanner useful without API access.
+
 ## Install
 
 ```bash
@@ -74,6 +80,8 @@ Open-source maintainers spend a lot of time on invisible work: triaging issues, 
 ## Roadmap
 
 - GitHub API ingestion for issue and pull request triage metrics.
+- Optional AI-assisted explanations and next-step recommendations for findings.
+- Release-risk summaries that turn changed files, ownership, and missing checks into reviewer prompts.
 - SARIF output for security posture findings.
 - Suggested GitHub labels and saved triage views.
 - Release-readiness reports that compare changed files against ownership and test coverage signals.

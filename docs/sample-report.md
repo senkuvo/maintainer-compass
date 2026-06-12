@@ -1,6 +1,6 @@
-# Maintainer Compass Report: fresh
+# Maintainer Compass Report: maintainer-compass
 
-**Score:** 94/100 (94/100 points)
+**Score:** 100/100 (100/100 points)
 
 ## Category Scores
 
@@ -8,7 +8,7 @@
 | --- | ---: |
 | automation | 25/25 |
 | onboarding | 25/25 |
-| release | 19/25 |
+| release | 25/25 |
 | security | 25/25 |
 
 ## Findings
@@ -29,5 +29,4 @@
 - **pass:** Changelog is present (release, 7 pts)
 - **pass:** Release automation is present (release, 7 pts)
 - **pass:** Version metadata is present (release, 5 pts)
-- **needs attention:** Git tags exist (release, 6 pts)
-  - Tag releases so downstream users can pin and audit versions.
+- **pass:** Git tags exist (release, 6 pts)
