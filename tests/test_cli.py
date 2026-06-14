@@ -32,6 +32,29 @@ class CliTests(unittest.TestCase):
 
             self.assertEqual(exit_code, 2)
 
+    def test_cli_can_write_only_failures_report(self) -> None:
+        with temporary_workspace() as directory:
+            tmp_path = Path(directory)
+            (tmp_path / "README.md").write_text("# Demo", encoding="utf-8")
+            output = tmp_path / "report.md"
+
+            exit_code = main(
+                [
+                    "scan",
+                    str(tmp_path),
+                    "--format",
+                    "markdown",
+                    "--only-failures",
+                    "--output",
+                    str(output),
+                ]
+            )
+
+            report = output.read_text(encoding="utf-8")
+            self.assertEqual(exit_code, 0)
+            self.assertIn("**needs attention:** Security policy is present", report)
+            self.assertNotIn("**pass:** README is present", report)
+
     def test_init_writes_templates(self) -> None:
         with temporary_workspace() as directory:
             tmp_path = Path(directory)

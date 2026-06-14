@@ -28,6 +28,11 @@ def build_parser() -> argparse.ArgumentParser:
     )
     scan.add_argument("--output", help="write report to this file")
     scan.add_argument(
+        "--only-failures",
+        action="store_true",
+        help="limit report findings to checks that need attention",
+    )
+    scan.add_argument(
         "--fail-under",
         type=int,
         metavar="SCORE",
@@ -46,7 +51,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "scan":
         result = scan_repository(args.path)
-        output = render(result, args.format)
+        output = render(result, args.format, only_failures=args.only_failures)
         if args.output:
             Path(args.output).write_text(output + "\n", encoding="utf-8")
         else:

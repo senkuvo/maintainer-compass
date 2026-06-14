@@ -29,6 +29,17 @@ class ReportTests(unittest.TestCase):
             self.assertIn("# Maintainer Compass Report:", report)
             self.assertIn("**needs attention:** Security policy is present", report)
 
+    def test_json_report_can_include_only_failures(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            tmp_path = Path(directory)
+            (tmp_path / "README.md").write_text("# Demo", encoding="utf-8")
+
+            payload = json.loads(render(scan_repository(tmp_path), "json", only_failures=True))
+
+            self.assertTrue(payload["only_failures"])
+            self.assertTrue(payload["findings"])
+            self.assertTrue(all(not finding["passed"] for finding in payload["findings"]))
+
 
 if __name__ == "__main__":
     unittest.main()

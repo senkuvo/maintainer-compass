@@ -43,6 +43,12 @@ Fail CI when a repository falls below a threshold:
 maintainer-compass scan . --fail-under 80
 ```
 
+Generate a focused report that only shows checks needing attention:
+
+```bash
+maintainer-compass scan . --format markdown --only-failures
+```
+
 Generate starter GitHub community-health files:
 
 ```bash
